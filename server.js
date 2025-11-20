@@ -1,11 +1,13 @@
-const express = require("express");
-const mongoose = require("mongoose");
+import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 app.use(express.json());
 
 mongoose
-  .connect("mongodb+srv://entri_fsd:lovely@cluster0.jlsuwkt.mongodb.net/?appName=Cluster0")
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
